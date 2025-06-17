@@ -1,6 +1,21 @@
 /*
+  Tabla: USUARIO
+  Definici贸n de la entidad USUARIO.
+  Fecha: [07/06/2025]
+*/
+CREATE TABLE USUARIO (
+  ID_Usuario   INT IDENTITY(1,1) PRIMARY KEY,
+  Nombre       NVARCHAR(100)     NOT NULL,
+  Apellido     NVARCHAR(100)     NOT NULL,
+  Email        NVARCHAR(200)     NOT NULL,
+  Contrasena   NVARCHAR(100)     NOT NULL,
+  TipoUsuario  NVARCHAR(20)      NOT NULL
+    CONSTRAINT chk_TipoUsuario CHECK (TipoUsuario IN ('Alumno','Bibliotecario'))
+);
+
+/*
   Tabla: LIBRO
-  Definici髇 de la entidad LIBRO.
+  Definici贸n de la entidad LIBRO.
   Fecha: [07/06/2025]
 */
 CREATE TABLE LIBRO (
@@ -13,7 +28,7 @@ CREATE TABLE LIBRO (
 
 /*
   Tabla: EJEMPLAR
-  Definici髇 de la entidad EJEMPLAR. Cada ejemplar pertenece a un libro.
+  Definici贸n de la entidad EJEMPLAR. Cada ejemplar pertenece a un libro.
   Tiene un estado: Disponible, Prestado o Reservado.
   Fecha: [07/06/2025]
 */
@@ -27,8 +42,8 @@ CREATE TABLE EJEMPLAR (
 
 /*
   Tabla: PRESTAMO
-  Definici髇 de la entidad PRESTAMO.
-  Relaciona un ejemplar, un usuario y las fechas del pr閟tamo.
+  Definici贸n de la entidad PRESTAMO.
+  Relaciona un ejemplar, un usuario y las fechas del pr茅stamo.
   Fecha: [07/06/2025]
 */
 CREATE TABLE PRESTAMO (
@@ -44,7 +59,7 @@ CREATE TABLE PRESTAMO (
 
 /*
   Tabla: RESERVA
-  Definici髇 de la entidad RESERVA. Cada reserva une usuario y ejemplar, con estado.
+  Definici贸n de la entidad RESERVA. Cada reserva une usuario y ejemplar, con estado.
   Fecha: [07/06/2025]
 */
 CREATE TABLE RESERVA (
@@ -59,7 +74,7 @@ CREATE TABLE RESERVA (
 );
 /*
   Tabla: MULTA
-  Guarda el monto de multa por devoluci髇 tard韆 de pr閟tamos.
+  Guarda el monto de multa por devoluci贸n tard铆a de pr茅stamos.
   Fecha: [08/06/2025]
 */
 CREATE TABLE MULTA (
